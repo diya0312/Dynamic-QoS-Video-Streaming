@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Adaptive Video Streaming</title>
+    <script>
+        function updateVideo() {
+            fetch('/stream?latency=50&bandwidth=4')  // Simulating network values
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("video").src = data.video_url;
+                });
+        }
+
+        setInterval(updateVideo, 5000);  // Check network every 5 sec
+    </script>
+</head>
+<body>
+    <h1>Dynamic QoS Video Streaming</h1>
+    <video id="video" width="800" height="450" controls>
+        <source src="/static/output_720p.mp4" type="video/mp4">
+    </video>
+</body>
+</html>
+
